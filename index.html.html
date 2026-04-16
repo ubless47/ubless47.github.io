@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="[긴급] HUG 민원 접수 가이드 - 유블레스 랜드마크47">
+<meta property="og:description" content="엘리베이터 고장·외벽 탈락 하자보수 지연 문제. 국민신문고 민원 5분 완성 가이드. 버튼 하나로 내용 복사 가능.">
+<meta property="og:image" content="https://ubless47.github.io/og-image.png">
+<title>[긴급] HUG 민원 접수 가이드 · 유블레스 랜드마크47</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --red: #E24B4A; --red-light: #FCEBEB; --red-dark: #A32D2D;
+    --blue: #185FA5; --blue-light: #E6F1FB; --blue-border: #B5D4F4;
+    --amber-light: #FAEEDA; --amber-border: #FAC775; --amber-dark: #633806;
+    --bg: #fff; --bg2: #F8F7F4; --bg3: #F1EFE8;
+    --text: #1a1a18; --text2: #5F5E5A; --text3: #888780;
+    --border: rgba(0,0,0,0.12); --border2: rgba(0,0,0,0.22);
+    --radius: 10px; --radius-sm: 7px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1c1c1a; --bg2: #252523; --bg3: #2c2c2a;
+      --text: #f0ede8; --text2: #b4b2a9; --text3: #888780;
+      --border: rgba(255,255,255,0.12); --border2: rgba(255,255,255,0.22);
+      --red-light: #3a1010; --amber-light: #2e1e08; --blue-light: #0c2340;
+    }
+  }
+  html { font-size: 16px; }
+  body { font-family: -apple-system, 'Noto Sans KR', sans-serif; background: var(--bg3); color: var(--text); line-height: 1.7; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 0 0 3rem; }
+
+  .hero { background: var(--bg); border-bottom: 1px solid var(--border); padding: 2.5rem 1.5rem 2rem; text-align: center; }
+  .badge { display: inline-flex; align-items: center; gap: 6px; background: var(--red-light); color: var(--red-dark); font-size: 12px; font-weight: 600; padding: 5px 14px; border-radius: 20px; margin-bottom: 14px; }
+  .badge::before { content: ''; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--red); animation: pulse 1.5s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+  .hero h1 { font-size: 19px; font-weight: 700; color: var(--text); margin-bottom: 6px; line-height: 1.4; }
+  .hero p { font-size: 14px; color: var(--text2); }
+
+  .progress { display: flex; align-items: center; padding: 1.2rem 1.5rem; background: var(--bg); border-bottom: 1px solid var(--border); gap: 0; overflow-x: auto; }
+  .prog-item { display: flex; flex-direction: column; align-items: center; gap: 4px; flex: 1; min-width: 52px; }
+  .prog-num { width: 28px; height: 28px; border-radius: 50%; background: var(--bg3); border: 1.5px solid var(--border); font-size: 12px; font-weight: 600; color: var(--text2); display: flex; align-items: center; justify-content: center; }
+  .prog-num.done { background: var(--red); border-color: var(--red); color: #fff; }
+  .prog-label { font-size: 10px; color: var(--text3); text-align: center; white-space: nowrap; }
+  .prog-line { flex: 1; height: 1.5px; background: var(--border); min-width: 12px; max-width: 32px; margin-bottom: 14px; }
+
+  .body { padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+  .card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  .card-header { display: flex; align-items: center; gap: 12px; padding: 1rem 1.25rem; border-bottom: 1px solid var(--border); }
+  .step-num { width: 30px; height: 30px; border-radius: 50%; background: var(--red); color: #fff; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .card-title { font-size: 15px; font-weight: 600; color: var(--text); }
+  .card-body { padding: 1.1rem 1.25rem; }
+  .desc { font-size: 14px; color: var(--text2); line-height: 1.75; margin-bottom: 12px; }
+  .desc:last-child { margin-bottom: 0; }
+
+  .link-row { background: var(--blue-light); border: 1px solid var(--blue-border); border-radius: var(--radius-sm); padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .link-url { font-size: 13px; font-weight: 600; color: var(--blue); }
+  .btn-go { background: var(--blue); color: #fff; border: none; border-radius: var(--radius-sm); padding: 9px 18px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; }
+  .btn-go:active { opacity: 0.85; }
+
+  .warn { background: var(--amber-light); border: 1px solid var(--amber-border); border-radius: var(--radius-sm); padding: 11px 14px; font-size: 13px; color: var(--amber-dark); line-height: 1.7; margin-top: 12px; }
+
+  .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  @media (max-width: 400px) { .field-grid { grid-template-columns: 1fr; } }
+  .field { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 10px 12px; }
+  .field-lbl { font-size: 11px; color: var(--text3); font-weight: 500; margin-bottom: 5px; }
+  .field-val { font-size: 13px; font-weight: 600; color: var(--text); display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+  .btn-copy-sm { background: transparent; border: 1px solid var(--border2); border-radius: 5px; padding: 3px 10px; font-size: 11px; color: var(--blue); cursor: pointer; white-space: nowrap; flex-shrink: 0; }
+  .btn-copy-sm:active { background: var(--bg3); }
+
+  .text-box { border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; margin-top: 12px; }
+  .text-box-head { display: flex; align-items: center; justify-content: space-between; padding: 9px 14px; background: var(--bg2); border-bottom: 1px solid var(--border); }
+  .text-box-lbl { font-size: 12px; font-weight: 600; color: var(--text2); }
+  .btn-copy-main { background: var(--red); color: #fff; border: none; border-radius: 5px; padding: 6px 14px; font-size: 12px; font-weight: 600; cursor: pointer; }
+  .text-body { padding: 14px; font-size: 13px; color: var(--text); line-height: 1.85; white-space: pre-wrap; max-height: 280px; overflow-y: auto; background: var(--bg); }
+
+  .checklist { display: flex; flex-direction: column; gap: 9px; }
+  .check-item { display: flex; align-items: flex-start; gap: 10px; }
+  .check-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--red); margin-top: 7px; flex-shrink: 0; }
+  .check-text { font-size: 13px; color: var(--text2); line-height: 1.65; }
+  .check-text b { color: var(--text); font-weight: 600; }
+
+  .after-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+  @media (max-width: 400px) { .after-grid { grid-template-columns: 1fr; } }
+
+  .share-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; margin-top: 1rem; }
+  .share-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .share-desc { font-size: 13px; color: var(--text2); margin-bottom: 14px; }
+  .share-text-box { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px 14px; font-size: 13px; color: var(--text); line-height: 1.8; white-space: pre-wrap; margin-bottom: 10px; }
+  .btn-copy-share { width: 100%; background: var(--bg3); border: 1px solid var(--border2); border-radius: var(--radius-sm); padding: 10px; font-size: 13px; font-weight: 600; color: var(--text); cursor: pointer; }
+  .btn-copy-share:active { background: var(--bg2); }
+
+  .toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(10px); background: #1a1a18; color: #f0ede8; font-size: 13px; font-weight: 500; padding: 11px 22px; border-radius: 24px; opacity: 0; transition: opacity 0.25s, transform 0.25s; pointer-events: none; z-index: 9999; white-space: nowrap; }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .footer { text-align: center; padding: 1.5rem; font-size: 12px; color: var(--text3); }
+
+  .photo-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 12px; }
+  .photo-item { border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; background: var(--bg2); }
+  .photo-label { font-size: 12px; font-weight: 600; color: var(--text2); padding: 9px 12px 0; }
+  .photo-thumb { width: 100%; max-height: 220px; object-fit: cover; display: block; margin-top: 8px; cursor: pointer; }
+  .btn-dl { display: block; text-align: center; background: var(--red); color: #fff; text-decoration: none; font-size: 13px; font-weight: 700; padding: 11px; margin-top: 0; }
+  .btn-dl:active { opacity: 0.85; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="hero">
+  <div class="badge">긴급 집단 민원</div>
+  <h1>국민신문고 HUG 민원 접수 가이드<br>유블레스 랜드마크47</h1>
+  <p style="margin-top:8px;">엘리베이터 고장 · 외벽 마감재 탈락 · 하자보수 지연<br>아래 순서대로 따라하시면 5분 안에 접수 완료됩니다</p>
+</div>
+
+<div class="progress">
+  <div class="prog-item"><div class="prog-num done">1</div><div class="prog-label">접속·로그인</div></div>
+  <div class="prog-line"></div>
+  <div class="prog-item"><div class="prog-num done">2</div><div class="prog-label">항목 입력</div></div>
+  <div class="prog-line"></div>
+  <div class="prog-item"><div class="prog-num done">3</div><div class="prog-label">본문 붙여넣기</div></div>
+  <div class="prog-line"></div>
+  <div class="prog-item"><div class="prog-num done">4</div><div class="prog-label">제출</div></div>
+  <div class="prog-line"></div>
+  <div class="prog-item"><div class="prog-num done">5</div><div class="prog-label">확인</div></div>
+</div>
+
+<div class="body">
+
+<div class="card">
+  <div class="card-header">
+    <div class="step-num">1</div>
+    <div class="card-title">국민신문고 접속 및 로그인</div>
+  </div>
+  <div class="card-body">
+    <p class="desc">아래 링크를 눌러 접속하세요. 로그인은 카카오, 네이버, 패스(PASS) 앱, 공동인증서 중 편하신 방법을 선택하시면 됩니다.</p>
+    <div class="link-row">
+      <div class="link-url">www.epeople.go.kr</div>
+      <a href="https://www.epeople.go.kr" target="_blank" class="btn-go">바로 접속하기 ↗</a>
+    </div>
+    <div class="warn">본인 명의로 로그인하셔야 민원이 정식 접수됩니다. 주민등록상 주소가 유블레스 랜드마크47이면 효력이 더욱 강해집니다.</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="step-num">2</div>
+    <div class="card-title">민원 항목 입력</div>
+  </div>
+  <div class="card-body">
+    <p class="desc">로그인 후 <b>민원신청 → 새 민원</b>을 선택하고 아래 항목을 그대로 입력(복사)하세요. HUG 담당 부서로 직접 전달됩니다.</p>
+    <div class="field-grid">
+      <div class="field">
+        <div class="field-lbl">수신기관</div>
+        <div class="field-val">주택도시보증공사 <button class="btn-copy-sm" onclick="copy('주택도시보증공사')">복사</button></div>
+      </div>
+      <div class="field">
+        <div class="field-lbl">민원 유형</div>
+        <div class="field-val">일반민원 (건의) <button class="btn-copy-sm" onclick="copy('일반민원')">복사</button></div>
+      </div>
+      <div class="field" style="grid-column: 1/-1;">
+        <div class="field-lbl">처리 요청 부서</div>
+        <div class="field-val">중부관리센터 이행관리팀 <button class="btn-copy-sm" onclick="copy('중부관리센터 이행관리팀')">복사</button></div>
+      </div>
+      <div class="field" style="grid-column: 1/-1;">
+        <div class="field-lbl">민원 제목</div>
+        <div class="field-val" style="flex-wrap:wrap; gap:6px;">
+          <span style="font-weight:600; font-size:12.5px;">[긴급] 유블레스 랜드마크47 하자보수이행보증 현장조사 즉각 실시 및 보증금 신속 지급 요청</span>
+          <button class="btn-copy-sm" onclick="copy('[긴급] 유블레스 랜드마크47 하자보수이행보증 현장조사 즉각 실시 및 보증금 신속 지급 요청')">복사</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="step-num">3</div>
+    <div class="card-title">민원 본문 붙여넣기</div>
+  </div>
+  <div class="card-body">
+    <p class="desc">아래 내용을 <b>전체 복사</b>해서 민원 본문란에 붙여넣으세요.</p>
+    <div class="text-box">
+      <div class="text-box-head">
+        <span class="text-box-lbl">민원 본문 전체</span>
+        <button class="btn-copy-main" id="mainBtn" onclick="copyMain()">전체 복사</button>
+      </div>
+      <div class="text-body" id="mainText">하자보수이행보증 현장조사 즉각 실시 및 보증금 신속 지급 요청
+
+수신: 주택도시보증공사(HUG) 중부관리센터 이행관리팀
+발신: 유블레스 랜드마크47 입주민 일동
+일자: 2026년 04월 09일
+민원제목: 유블레스 랜드마크47 엘리베이터 고장 및 외벽 마감재 탈락으로 인한 입주민 안전 위협
+민원구분: 안전 위협 하자 - 긴급 우선 처리 요청
+
+안녕하십니까. 저희는 전북 익산시에 위치한 유블레스 랜드마크47에 거주하는 입주민입니다. 현재 저희 단지에서 발생하고 있는 심각한 안전 문제에 대해 주택도시보증공사(HUG)에 직접 민원을 제기합니다.
+
+저희는 HUG로부터 발송된 "하자보수이행 지연 사과 및 향후 운영 방향 안내" 공문을 통해 담당자 교체에 따른 업무 혼선이 있었고, 하자보수 이행에 통상 9개월에서 12개월이 소요된다는 사실을 전달받았습니다. 저희는 HUG의 업무 환경이 어렵다는 것을 압니다. 그러나 저희가 이 민원을 직접 작성하게 된 이유는 단 하나입니다. 9개월에서 12개월을 기다리는 그 시간 동안 저희 가족 중 누군가가 다치거나, 최악의 경우 목숨을 잃을 수 있다는 공포 때문입니다. 이것은 과장이 아니라 지금 저희가 매일 느끼는 현실입니다.
+
+【첫 번째 문제】 엘리베이터가 고장난 채 방치되고 있습니다
+
+저희 단지 101동 1~3호라인은 47층짜리 고층 아파트입니다. 총 129세대가 살고 있으며 엘리베이터는 비상용 1대, 일반 2대로 총 3대가 전부입니다. 그런데 현재 일반 엘리베이터 1대가 기계실 누수로 인해 고장난 채 멈춰 있습니다. 보수 공사를 하고 싶어도 시공사가 부도난 상태라 할 수가 없고, HUG에서 보증금이 나와야 공사를 시작할 수 있습니다.
+
+지금 운행 중인 엘리베이터는 비상용 1대와 일반 1대, 총 2대입니다. 비상용 엘리베이터는 화재 등 긴급 상황이 발생하면 소방관 전용으로 전환되어 주민들은 사용할 수 없습니다. 2025년 8월 18일 오후 3시경에는 비상용 엘리베이터 24층에서 실제로 화재가 발생하기도 했습니다. 결국 화재 발생 시 129세대가 실질적으로 의존할 수 있는 대피 수단은 현재 운행 중인 일반 엘리베이터 단 1대뿐입니다.
+
+현재 단지에는 혼자 사시는 80대 어르신, 갓 태어난 아기를 안고 사는 가정, 다리가 불편하여 계단을 오르내리지 못하는 분이 30~40층에 거주하고 계십니다. 화재나 응급 상황 발생 시 엘리베이터 없이는 대피가 불가능한 상황입니다.
+
+【두 번째 문제】 외벽 마감재가 떨어지고 있습니다
+
+2026년 4월 9일 현장 확인 결과, 외벽 마감재 일부가 이미 떨어졌거나 금방이라도 떨어질 것 같은 상태임이 확인되었습니다. 저희 단지는 47층 고층 건물로, 높은 곳에서 마감재 조각이 낙하할 경우 즉각적인 인명피해로 이어질 수 있습니다. 단지는 익산역 인근으로 외부 통행인이 많으며, 어린이집도 곧 입주할 예정입니다. 단지 특성상 풍압에 의한 추가 이탈 가능성도 상존합니다.
+
+이 문제 역시 HUG의 보증금 지급 없이는 저희 힘으로 해결할 방법이 없습니다.
+
+【요청 사항】
+
+1. 위 두 가지 사안에 대해 타 사업장보다 우선하여 현장조사를 실시해 주십시오.
+2. 심사를 신속히 완료하여 보증금을 최대한 빨리 지급해 주십시오.
+3. 현장조사 예정 일정을 민원 접수 후 7일 이내에 통보해 주십시오.
+4. 현장조사 일정 안내조차 없을 경우, 국토교통부·감사원 등 추가 경로를 통해 도움을 구할 수밖에 없음을 알려드립니다.
+
+HUG 공문에서 "각 사업장의 하자보수보증 이행이 차질 없이 진행될 수 있도록 최선을 다하겠다"고 약속하셨습니다. 저희는 그 약속이 저희 단지에서, 지금 이 순간 실현되기를 간곡히 바랍니다.
+
+※ 본 민원은 유블레스 랜드마크47 입주민이 개별적으로 동일 내용으로 제출하는 집단 민원입니다.</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="card" id="photoCard">
+  <div class="card-header">
+    <div class="step-num" style="background:#E24B4A;">📎</div>
+    <div class="card-title">증거 사진 다운로드 후 첨부</div>
+  </div>
+  <div class="card-body">
+    <p class="desc">민원 접수 시 아래 사진을 <b>첨부파일</b>로 함께 제출하면 처리가 훨씬 빨라집니다.<br>각 사진 아래 <b>다운로드</b> 버튼을 눌러 저장한 뒤, 국민신문고 첨부파일란에 업로드하세요.</p>
+    <div class="photo-grid">
+      <div class="photo-item">
+        <div class="photo-label">불임 3 · 2025.08.18 댐퍼 화재 그을음</div>
+        <img src="evidence3_fire_damage.png" class="photo-thumb" alt="댐퍼 화재 사고 그을음 사진">
+        <a download="증거1_댐퍼화재그을음_20250818.png" href="evidence3_fire_damage.png" class="btn-dl">다운로드</a>
+      </div>
+      <div class="photo-item">
+        <div class="photo-label">불임 1 · HUG 이행관리팀 공문</div>
+        <img src="evidence1_hug_letter.png" class="photo-thumb" alt="HUG 공문 사본">
+        <a download="증거2_HUG공문사본.png" href="evidence1_hug_letter.png" class="btn-dl">다운로드</a>
+      </div>
+      <div class="photo-item">
+        <div class="photo-label">불임 2 · 외벽 마감재 낙석 현장 사진 + 3층 출입통제 공고</div>
+        <img src="evidence2_wall_damage.png" class="photo-thumb" alt="외벽 마감재 낙석 현장">
+        <a download="증거3_외벽낙석현장_3층출입통제.png" href="evidence2_wall_damage.png" class="btn-dl">다운로드</a>
+      </div>
+    </div>
+    <div class="warn" style="margin-top:14px;">📱 스마트폰에서는 사진을 <b>길게 누른 뒤 저장</b>하거나, 다운로드 버튼을 눌러 저장 후 민원 첨부파일란에 업로드하세요.</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="step-num">4</div>
+    <div class="card-title">제출 전 최종 확인</div>
+  </div>
+  <div class="card-body">
+    <p class="desc">아래 사항을 확인하고 제출하세요.</p>
+    <div class="checklist">
+      <div class="check-item"><div class="check-dot"></div><div class="check-text">연락처(휴대폰)를 정확히 입력해야 HUG에서 일정 연락이 옵니다.</div></div>
+      <div class="check-item"><div class="check-dot"></div><div class="check-text">위에서 다운로드한 <b>증거 사진 3장</b>을 첨부파일란에 업로드하세요. 처리 우선순위가 크게 올라갑니다.</div></div>
+      <div class="check-item"><div class="check-dot"></div><div class="check-text">제출 후 발급받는 <b>접수번호</b>를 캡처하거나 메모해 두세요. 진행 상황 조회에 필요합니다.</div></div>
+      <div class="check-item"><div class="check-dot"></div><div class="check-text">같은 내용이라도 <b>많은 세대가 접수할수록</b> 처리 우선순위가 올라갑니다. 이 페이지를 이웃에게 공유해 주세요.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="step-num">5</div>
+    <div class="card-title">접수 후 진행상황 확인</div>
+  </div>
+  <div class="card-body">
+    <p class="desc">민원 접수 후 7일 이내에 HUG로부터 현장조사 일정 연락이 없을 경우, 아래 기관에 추가 민원을 제기하세요.</p>
+    <div class="after-grid">
+      <div class="field">
+        <div class="field-lbl">HUG 고객센터</div>
+        <div class="field-val">1566-9009 <button class="btn-copy-sm" onclick="copy('1566-9009')">복사</button></div>
+      </div>
+      <div class="field">
+        <div class="field-lbl">국토교통부 민원</div>
+        <div class="field-val"><a href="https://www.molit.go.kr" target="_blank" style="color:var(--blue); font-size:13px; text-decoration:none; font-weight:600;">바로가기 ↗</a></div>
+      </div>
+      <div class="field">
+        <div class="field-lbl">국민신문고 진행조회</div>
+        <div class="field-val"><a href="https://www.epeople.go.kr" target="_blank" style="color:var(--blue); font-size:13px; text-decoration:none; font-weight:600;">바로가기 ↗</a></div>
+      </div>
+      <div class="field">
+        <div class="field-lbl">감사원 공익감사 청구</div>
+        <div class="field-val"><a href="https://www.bai.go.kr" target="_blank" style="color:var(--blue); font-size:13px; text-decoration:none; font-weight:600;">바로가기 ↗</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="share-card">
+  <div class="share-title">이웃 세대에 공유하기</div>
+  <div class="share-desc">카카오톡 단톡방이나 네이버카페에 아래 문구를 복사해서 올려주세요.</div>
+  <div class="share-text-box" id="shareText">📢 [긴급] 유블레스 랜드마크47 입주민 여러분께
+
+엘리베이터 고장 및 외벽 마감재 탈락 문제로 HUG에 집단 민원을 접수하고 있습니다.
+
+아래 링크에서 5분만에 민원 접수 가능합니다.
+민원 내용이 이미 다 작성되어 있어 복사-붙여넣기만 하시면 됩니다.
+
+👇 민원 접수 가이드 (클릭)
+https://ubless47.github.io/hug-complaint/
+
+참여하시는 세대가 많을수록 HUG 처리가 빨라집니다.
+5분만 내주세요. 우리 모두를 위한 일입니다. 🙏</div>
+  <button class="btn-copy-share" onclick="copyShare()">카카오톡·네이버카페용 문구 복사</button>
+</div>
+
+</div>
+
+<div class="footer">유블레스 랜드마크47 입주자대표회의 · 2026년 4월</div>
+</div>
+
+<div class="toast" id="toast">복사되었습니다 ✓</div>
+
+<script>
+function showToast(msg) {
+  var t = document.getElementById('toast');
+  t.textContent = msg || '복사되었습니다 ✓';
+  t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); }, 2200);
+}
+function copy(text) {
+  navigator.clipboard.writeText(text).then(function(){ showToast(); });
+}
+function copyMain() {
+  var text = document.getElementById('mainText').innerText;
+  navigator.clipboard.writeText(text).then(function(){
+    var btn = document.getElementById('mainBtn');
+    btn.textContent = '복사 완료 ✓';
+    showToast('본문 전체가 복사되었습니다');
+    setTimeout(function(){ btn.textContent = '전체 복사'; }, 3000);
+  });
+}
+function copyShare() {
+  var text = document.getElementById('shareText').innerText;
+  navigator.clipboard.writeText(text).then(function(){ showToast('공유 문구가 복사되었습니다'); });
+}
+</script>
+</body>
+</html>
